@@ -1,0 +1,51 @@
+
+
+// COLOR VARIABLES
+$color-grey-light: #eaeaea;
+$color-primary: #fbbc93;
+$color-text: #231f20;
+$color-paper: #f4f4f4;
+
+
+//FONT VARIABLES
+$font-primary: 'Oxygen', sans-serif;
+$font-secondary: 'Karla', sans-serif;
+
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+
+
+body {
+  font-family: $font-primary;
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 8rem calc(100vh - 8rem);
+  grid-template-columns: [full-start] minmax(12rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(12rem, 1fr) [full-end];
+  
+}
+
+.App {
+  background-color: #f6f1ee;
+  position: relative;
+  z-index: 1;
+}

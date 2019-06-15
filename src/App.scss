@@ -1,0 +1,299 @@
+@import "index";
+@import "typography";
+
+@keyframes shrinking{
+  0%{
+      
+      transform: scale(1);
+  }
+  25%{
+      
+    transform: scale(0.85);
+  }
+  50%{
+      
+      transform: scale(0.75);
+  }
+  75%{
+      
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -50;
+}
+
+
+//HOME CSS
+.mainsubgrid {
+  grid-column: 1 / -1;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: [full-start] minmax(12rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(12rem, 1fr) [full-end];
+  height: 8rem calc(100vh - 8rem);
+}
+.home {
+
+  grid-column: 1 / -1;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: [full-start] minmax(12rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(12rem, 1fr) [full-end];
+  height: 8rem calc(100vh - 8rem);
+  position: relative;
+  z-index: -4;
+
+  &__bg {
+    grid-row: 1 / -1;
+    grid-column: 2 / 10;
+    color: #fbbc93;
+    place-self: center;
+    max-width: 70vw;
+    max-height: 68vh;
+    opacity: 0.015;
+    position: absolute;
+    z-index: -6;
+
+  }
+
+  &__pic {
+    grid-row: 1 / -1;
+    grid-column: 2 / 10;
+    place-self: center;
+    max-width: 60vw;
+    max-height: 54vh;
+    position: absolute;
+    opacity: 0.65;
+    z-index: -5;
+
+  }
+
+
+  &__content {
+    grid-column: 6 / -1;
+    place-self: center;
+  }  
+
+  &__divider {
+    width: 2px;
+   height: 6rem;
+   background: $color-primary;
+   margin: auto 3rem;
+   animation: shrinking 1.5s;
+   animation-timing-function: linear;
+   -webkit-animation-timing-function: linear;
+   animation-iteration-count: infinite;
+
+    &--about {
+      width: 2px;
+      height: 4rem;
+      background: $color-primary;
+      margin: auto 3rem;
+      animation: shrinking 1.5s;
+      animation-timing-function: linear;
+      -webkit-animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  }
+  
+}
+
+//ABOUT CSS
+.about {
+
+  grid-column: 1 / -1;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: [full-start] minmax(12rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(12rem, 1fr) [full-end];
+  height: 8rem calc(100vh - 8rem);
+  position: relative;
+  z-index: 1;
+
+  &__pic {
+    grid-row: 1 / -1;
+    grid-column: 6 / -1;
+    align-self: center;
+    justify-self: start;
+    max-height: 50vh;
+    position: relative;
+    opacity: 0.85;
+    z-index: -5;
+    padding-left: 4rem;
+
+  }
+  &__content {
+    grid-column: 1 / 6;
+    align-self: center;
+    justify-self: end;
+    max-width: 45rem;
+    padding-right: 4rem;
+
+    &--side {
+      grid-row: 1 / -1;
+      grid-column: 6 / -1;
+      align-self: end;
+      justify-self: start;
+      max-height: 50vh;
+      position: relative;
+      opacity: 0.85;
+      z-index: -5;
+      padding-bottom: 4rem;
+    }
+
+    p {
+      color: $color-text;
+      font-weight: 700;
+      font-size: 1.7rem;
+    }
+    .pink {
+      color: $color-text;
+      font-size: 8rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .btn {
+     
+      &,&:link, &:visited {
+          text-decoration: none;
+          padding: 1rem 2rem;
+          display: inline-block; 
+          border-radius: 10rem;
+          transition: all .2s; /*usually ginabutang sa initial state kay macarry-over man ni sya sa other pseudoclasses because of all na property*/
+          position: relative;
+          font-size: 16px;
+  
+          border: none; /*kani na mga properties kay para sa button element and not para sa anchor element and kinihanglan na iapil sa selector ang & kay walay link ug visited ang button na element */
+          cursor: pointer;
+          
+      }
+      
+      &--white {
+          background-color:#fbbc93;
+          color:#f6f1ee;
+  
+          &::after{
+              background-color:#fbbc93;
+          }
+      }
+      
+      &:hover{
+          transform: translateY(-0.3rem); /*usually up is negative value*/
+          box-shadow: 0 1rem 2rem rgba(black,.2);/*mura nig x , y, blur value, ug color*/
+  
+          &::after{
+              transform: scaleX(1.4) scaleY(1.6); /*if scale lang, murag di nimo macontrol ang size*/
+              opacity: 0; /*sets something to invisible*/
+          }
+      }
+      
+      &:active, &:hover{
+          transform: translateY(-0.1rem);
+          box-shadow: 0 0.5rem 1rem rgba(black,.2);/*usually better na half ang value pag-abot sa active na state*/
+      }
+      
+      &::after{ 
+          content: ""; /*content and display property is impt to make after pseudoelement appear on the page */
+          display: inline-block;
+          height: 100%;
+          width: 100%;
+          border-radius: 10rem;
+          position: absolute; /*ang iya relative should be the btn itself*/
+          top: 0;
+          left: 0;
+          z-index: -1; /*-1 para muadto syas luyo*/
+          transition: all .4s;
+          
+      }
+      
+      
+      
+     
+  }
+
+
+  }  
+  
+}
+
+//Navigation CSS
+
+.slash {
+  color: $color-primary;
+}
+
+.navigation {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    grid-auto-flow: column;
+    position: relative;
+    z-index: 2;
+
+    .links {
+
+      padding: 5rem 5rem;
+      font-family: $font-primary;
+      color: $color-text;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: grid;
+      justify-content: end;
+      align-content: center;
+      grid-auto-flow: column;
+      grid-gap: 7rem;
+     
+      
+    }
+
+    .logo {
+      color: $color-text;
+      font-size: 2rem;
+      font-family: $font-primary;
+      font-weight: 700;
+      padding: 4.5rem;
+      display: grid;
+      justify-content: start;
+      align-content: center;
+      
+    }
+
+  }
+
+a.link:link {
+  text-decoration: none;
+}
+
+a.link:visited{
+  color: $color-text;
+}
+
+
+
+a.link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: $color-primary;
+  transition: all .3s;
+}
+
+a.link:hover::after {
+  width: 100%;
+  transition: all .3s;
+ 
+}
+
+a.link:active {
+  color: $color-primary;
+  transform: scale(1.03);
+}
