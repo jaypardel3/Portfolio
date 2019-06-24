@@ -22,13 +22,13 @@ const Home = () => {
                         <a class='btn btn--white btn--animated' href='http://www.google.com' target='_blank'>Download my resume.</a>
                     </div>
                     <div class='about__content--side'>
-                            <div class='worklink'>
-                                <div class=''>LINKEDIN</div>
-                                <div class=''>GITHUB</div>
+                            <div class='linked'>
+                                <div class='linked__des'>LINKEDIN</div>
+                                <div class='linked__link'>Jay Pardel Obate</div>
                             </div>
-                            <div class='worklink'>
-                                <a>JayPardelObate</a>
-                                <a>jaypardel3</a>
+                            <div class='git'>
+                                <div class='git__des'>GITHUB</div>
+                                <a class='git__link' href='https://github.com/jaypardel3' target='_blank'>jaypardel3</a>
                             </div>
                     </div>
                 </section>

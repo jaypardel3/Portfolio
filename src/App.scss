@@ -58,7 +58,7 @@
     place-self: center;
     max-width: 70vw;
     max-height: 68vh;
-    opacity: 0.015;
+    opacity: 0.020;
     position: absolute;
     z-index: -6;
 
@@ -71,7 +71,7 @@
     max-width: 60vw;
     max-height: 54vh;
     position: absolute;
-    opacity: 0.65;
+    opacity: 0.55;
     z-index: -5;
 
   }
@@ -139,13 +139,39 @@
     &--side {
       grid-row: 1 / -1;
       grid-column: 6 / -1;
-      align-self: end;
-      justify-self: start;
-      max-height: 50vh;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(min-content, 28rem)) minmax(2rem, 1fr);
+      grid-template-rows: minmax(50rem, 82rem) minmax(10rem, 1fr);
       position: relative;
-      opacity: 0.85;
-      z-index: -5;
-      padding-bottom: 4rem;
+      height: 100vh;
+
+      .linked, .git {
+        justify-self: center;
+        text-align: center;
+        align-self: end;
+      }
+
+      .linked, .git {
+        &__des {
+          color: $color-text;
+          font-size: 1.2rem;
+          font-weight: 700;
+        }
+
+        &__link {
+          color: #9c9c9c;
+          font-size: 1.4rem;
+          text-decoration: none;
+
+          &:hover {
+            color: $color-text;
+            cursor: pointer;
+            transition: color .2s ease;
+          }
+        }
+      }
+
+
     }
 
     p {
@@ -159,69 +185,186 @@
       font-weight: 700;
       line-height: 1;
     }
+  }  
+  
+}
 
-    .btn {
+.btn {
      
-      &,&:link, &:visited {
-          text-decoration: none;
-          padding: 1rem 2rem;
-          display: inline-block; 
-          border-radius: 10rem;
-          transition: all .2s; /*usually ginabutang sa initial state kay macarry-over man ni sya sa other pseudoclasses because of all na property*/
-          position: relative;
-          font-size: 16px;
-  
-          border: none; /*kani na mga properties kay para sa button element and not para sa anchor element and kinihanglan na iapil sa selector ang & kay walay link ug visited ang button na element */
-          cursor: pointer;
-          
-      }
+  &,&:link, &:visited {
+      text-decoration: none;
+      padding: 1rem 2rem;
+      display: inline-block; 
+      border-radius: 10rem;
+      transition: all .2s; /*usually ginabutang sa initial state kay macarry-over man ni sya sa other pseudoclasses because of all na property*/
+      position: relative;
+      font-size: 16px;
+
+      border: none; /*kani na mga properties kay para sa button element and not para sa anchor element and kinihanglan na iapil sa selector ang & kay walay link ug visited ang button na element */
+      cursor: pointer;
       
-      &--white {
-          background-color:#fbbc93;
-          color:#f6f1ee;
+  }
   
-          &::after{
-              background-color:#fbbc93;
+  &--white {
+      background-color:$color-primary;
+      color: $color-paper;
+
+      &::after{
+          background-color:$color-primary;
+      }
+  }
+  
+  &:hover{
+      transform: translateY(-0.3rem); /*usually up is negative value*/
+      box-shadow: 0 1rem 2rem rgba(black,.2);/*mura nig x , y, blur value, ug color*/
+
+      &::after{
+          transform: scaleX(1.4) scaleY(1.6); /*if scale lang, murag di nimo macontrol ang size*/
+          opacity: 0; /*sets something to invisible*/
+      }
+  }
+  
+  &:active, &:hover{
+      transform: translateY(-0.1rem);
+      box-shadow: 0 0.5rem 1rem rgba(black,.2);/*usually better na half ang value pag-abot sa active na state*/
+  }
+  
+  &::after{ 
+      content: ""; /*content and display property is impt to make after pseudoelement appear on the page */
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      position: absolute; /*ang iya relative should be the btn itself*/
+      top: 0;
+      left: 0;
+      z-index: -1; /*-1 para muadto syas luyo*/
+      transition: all .4s;
+      
+  }
+  
+  
+  
+ 
+}
+
+
+//Contact CSS
+.contact {
+
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  display: grid;
+  grid-template-columns: [full-start] minmax(12rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(12rem, 1fr) [full-end];
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  display: grid;
+
+  &__right {
+    grid-column: 6 / -1;
+    grid-row: 1 / -1;
+    place-self: center;
+    position: relative;
+    padding-bottom: 39rem;
+  }
+
+  &__left {
+    grid-column: 1 / 6;
+    grid-row: 1 / -1;
+    justify-self: end;
+    align-self: center;
+    position: relative;
+    padding-top: 9rem;
+    padding-right: 20rem;
+
+
+  }
+
+  &__maintext {
+    font-size: 10rem;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  &__divider {
+    height: 0.2rem;
+    width: 14rem;
+    background-color: $color-primary;
+    margin: 2rem 0;
+    animation: shrinking 1.5s;
+   animation-timing-function: linear;
+   -webkit-animation-timing-function: linear;
+   animation-iteration-count: infinite;
+    
+  }
+
+  &__details {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-text;
+    margin-top: 6rem;
+    margin-left: 2rem;
+  }
+
+  &__gold {
+    color: $color-primary;
+  }
+
+}
+
+.form {
+
+  &__group {
+
+  }
+
+  &__input {
+      font-size: 1.3rem;
+      padding: 1.5rem 2rem;
+      border-radius: 2px;
+      background-color: rgba(white, .5);
+      border: none;
+      font-family: 'oxygen'; /*needed ni kay naay default na font ang mga input na html */
+      border-bottom: 3px solid transparent; /*needed ni para mustay put ra ang iya position pag naa na sya sa focus na state */
+      width: 150%;
+      display: block;
+      transition: all .3s;
+
+      &::-webkit-input-placeholder { /*this is para mulahi ang color pag-nagstart na type ang user */
+          color: $color-primary;
+      }
+
+      &:focus {
+          outline: none; /*para matangtang tung blue na outline if click sya */
+          box-shadow: 0 1rem 2rem rgba($color-primary, .1);
+          border-bottom: 3px solid $color-primary;
+
+          &:invalid {
+              border-bottom: 3px solid black;
           }
       }
-      
-      &:hover{
-          transform: translateY(-0.3rem); /*usually up is negative value*/
-          box-shadow: 0 1rem 2rem rgba(black,.2);/*mura nig x , y, blur value, ug color*/
-  
-          &::after{
-              transform: scaleX(1.4) scaleY(1.6); /*if scale lang, murag di nimo macontrol ang size*/
-              opacity: 0; /*sets something to invisible*/
-          }
-      }
-      
-      &:active, &:hover{
-          transform: translateY(-0.1rem);
-          box-shadow: 0 0.5rem 1rem rgba(black,.2);/*usually better na half ang value pag-abot sa active na state*/
-      }
-      
-      &::after{ 
-          content: ""; /*content and display property is impt to make after pseudoelement appear on the page */
-          display: inline-block;
-          height: 100%;
-          width: 100%;
-          border-radius: 10rem;
-          position: absolute; /*ang iya relative should be the btn itself*/
-          top: 0;
-          left: 0;
-          z-index: -1; /*-1 para muadto syas luyo*/
-          transition: all .4s;
-          
-      }
-      
-      
-      
-     
+
   }
 
 
-  }  
-  
+
+  &__label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-left: 2rem;
+      margin-top: 0.7rem;
+      display: block; /*needed to be block para magamit ang box-type properties */
+      transition: all .3s;
+  }
+
+  &__input:placeholder-shown + &__label  { /*kaning plus sign is for ADJACENT sibling selector then  ang ~ is for any sibling selector; kinihanglan ang plus sign kay dili child element ang label sa input instead siblings sila so kinihanglan jd ang plus sign and mugana ra ang plus sign sa mga sibling na naa saa LALOM, di ni mugana if naa sa TAAS */
+      opacity: 0; /*if dili sya i-hidden, then naa rajd sya na element sa page */
+      visibility: hidden; /*kinihanglan pd ang opacity na 0 kay needed sya para pwede sya ma-animate */
+      transform: translateY(-4rem); /*para naa sya behind sa placeholder */
+
+  }
+
 }
 
 //Navigation CSS

@@ -4,6 +4,7 @@ import './App.scss';
 import Particles from 'react-particles-js';
 import Navigation from "./components/Navigation";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import untitled from './Untitled-1.png';
 
 import Home from "./components/Home";
 import About from "./components/About";
@@ -131,6 +132,7 @@ class App extends Component {
     return (
       <div className="App">
         <body class="container">
+          <img class='home__bg' src={untitled} alt='background' />
           <BrowserRouter>
             <Navigation />
             <Switch>
@@ -144,6 +146,7 @@ class App extends Component {
           <Particles className="particles"
           params={particlesparams}
           />
+          
         </body>
         
         <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet"></link>

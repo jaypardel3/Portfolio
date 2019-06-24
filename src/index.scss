@@ -2,7 +2,7 @@
 
 // COLOR VARIABLES
 $color-grey-light: #eaeaea;
-$color-primary: #fbbc93;
+$color-primary: #C0b283;
 $color-text: #231f20;
 $color-paper: #f4f4f4;
 
@@ -45,7 +45,7 @@ code {
 }
 
 .App {
-  background-color: #f6f1ee;
+  background-color: $color-paper;
   position: relative;
   z-index: 1;
 }
